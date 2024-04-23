@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>International Yoga Day</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #8AAAE5;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color:blanchedalmond;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            margin-top: 50px;
+        }
+        #slider {
+            width: 100%;
+            overflow: hidden;
+            margin-top: 20px;
+        }
+        #slider img {
+            width: 100%;
+            display: none;
+        }
+        #passwordSection {
+            display: none;
+            margin-top: 20px;
+        }
+        .employee-type {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>International Yoga Day</h1>
+        <div id="slider">
+            <img src="./yoga-balance-nature-handstand.jpg" alt="Yoga Image 1">
+            <img src="./yoga-zen-meditating-pose.jpg" alt="Yoga Image 2">
+            <img src="./download.jpeg" alt="Yoga Image 3">
+        </div>
+        <br><br>
+        <button onclick="togglePasswordSection()">Generate Password</button>
+        <div id="passwordSection">
+            <h2>Your Random Password:</h2>
+            <p id="password"></p>
+        </div>
+        <form id="registrationForm">
+            <h2>Event Registration Form</h2>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required><br><br>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required><br><br>
+            <label for="occupation">Occupation:</label>
+            <select id="occupation" name="occupation" onchange="toggleEmployeeType()">
+                <option value="employee">Employee</option>
+                <option value="student">Student</option>
+                <option value="other">Other</option>
+            </select><br>
+            <div class="employee-type">
+                <label>Employee Type:</label><br>
+                <input type="radio" id="government" name="employeeType" value="government">
+                <label for="government">Government</label><br>
+                <input type="radio" id="private" name="employeeType" value="private">
+                <label for="private">Private</label><br><br>
+            </div>
+            <button type="button" onclick="generateBill()">Submit</button>
+        </form>
+        <div id="bill"></div>
+    </div>
+
+    <script>
+        const sliderImages = document.querySelectorAll("#slider img");
+        let currentSlide = 0;
+        const slideInterval = setInterval(nextSlide, 3000);
+
+        function nextSlide() {
+            sliderImages[currentSlide].style.display = 'none';
+            currentSlide = (currentSlide + 1) % sliderImages.length;
+            sliderImages[currentSlide].style.display = 'block';
+        }
+
+        function togglePasswordSection() {
+            const passwordSection = document.getElementById('passwordSection');
+            passwordSection.style.display = passwordSection.style.display === 'none' ? 'block' : 'none';
+
+            if (passwordSection.style.display === 'block') {
+                document.getElementById('password').innerText = generatePassword();
+            }
+        }
+
+        function generatePassword() {
+            const length = 8;
+            const charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            let password = "";
+            for (let i = 0; i < length; ++i) {
+                password += charset.charAt(Math.floor(Math.random() * charset.length));
+            }
+            return password;
+        }
+
+        function toggleEmployeeType() {
+            const occupationSelect = document.getElementById('occupation');
+            const employeeTypeSection = document.querySelector('.employee-type');
+
+            if (occupationSelect.value === 'employee') {
+                employeeTypeSection.style.display = 'block';
+            } else {
+                employeeTypeSection.style.display = 'none';
+            }
+        }
+
+        function generateBill() {
+            const form = document.getElementById('registrationForm');
+            const name = form.elements['name'].value;
+            const occupation = form.elements['occupation'].value;
+            const employeeType = form.elements['employeeType'].value;
+            let discount = 0;
+
+            if (occupation === 'employee') {
+                if (employeeType === 'government') {
+                    discount = 0.25; 
+                } else if (employeeType === 'private') {
+                    discount = 0.00; 
+                }
+            } else if (occupation === 'student') {
+                discount = 0.5; 
+            }
+
+            const billAmount = 100; 
+            const discountedAmount = billAmount - (billAmount * discount);
+
+            const billDiv = document.getElementById('bill');
+            billDiv.innerHTML = `
+                <h2>Bill</h2>
+                <p>Name: ${name}</p>
+                <p>Occupation: ${occupation}</p>
+                <p>Employee Type: ${employeeType}</p>
+                <p>Bill Amount: $${billAmount}</p>
+                <p>Discount: ${discount * 100}%</p>
+                <p>Discounted Amount: $${discountedAmount}</p>
+            `;
+        }
+    </script>
+</body>
+</html>
+

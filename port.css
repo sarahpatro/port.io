@@ -1,0 +1,155 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.image-container {
+    flex: 0 0 auto; 
+    height: 100vh; 
+    overflow: hidden; 
+}
+
+img {
+    height: 100%; 
+    width: auto; 
+    object-fit: cover; 
+   
+
+
+}
+
+main {
+    flex: 1;
+    
+}
+
+
+header{
+    text-align :center;
+    font-family: 'Times New Roman';
+    font-size:  30px; ;
+}
+
+p{
+    font-size: 25px;
+    margin-left:30px;
+    
+}
+
+#one{
+    font-size:20px;
+
+}
+a{font-size:20px;
+       margin-left:30px;}
+
+
+a:hover{color: blue;}
+
+a:visited{color:green;}
+
+
+#skillhead{
+    text-align: left;
+}
+
+pre{
+    text-align:center;
+    font-size:20px;
+    font-family:'Times New Roman';
+    font-style: italic;
+    color: rebeccapurple;
+}
+
+#div1{
+    background-color: #e6e1cf; /* Beige */
+    color: #333;
+    height:230px;
+    text-align:center;
+    padding-top:100px;
+    margin-top:0;
+    border-top:0;
+}
+
+#div2{
+    background-color: #e6e1cf; /* Beige */
+    color: #333;
+    height:260px;
+
+}
+#div3{
+    background-color: #c9c0a7; /* Tan */
+    color: #2d2411; 
+    margin-top: 0;
+    height:450px;
+}
+
+#seven{
+    margin-top:0;margin-left:30px;margin-bottom:0;height:34px;
+}
+
+
+
+#div5{
+    background-color: #d8cab8; /*dusy rose*/
+    color: #82295b;
+  
+}
+
+#div6{     background-color: #d8cab8; /*dusy rose*/
+    color: #82295b;
+            height:1400px;
+}
+
+#div7{
+    background-color: #b8c1b1; /* Sage Green */
+    color: #333;
+    text-align: left;
+    height:220px;
+}
+
+#div8{
+    background-color: #d5c3aa; /* Mauve */
+    color: #443493;
+}
+
+.headings{margin-top:0;
+           margin-left:30px;
+        font-style: normal;
+    text-decoration: underline ;
+color: rgb(73, 49, 49);}
+           
+main{margin-top:0;
+padding:0;}
+
+footer{
+    text-align: center;
+    font-size: 20px;
+}
+
+#email{
+    height:20px;
+    width:auto;
+}
+
+#image1{
+    height:450px;
+    width:auto;
+    margin-left: 100px;
+    margin-top:0;
+}
+
+#eight{
+    padding-left:100px;
+}
+
+#nine{
+    padding-left:100px;
+}
+
+video{
+    height:500px;
+    width:auto;
+    margin-left:100px;
+}
